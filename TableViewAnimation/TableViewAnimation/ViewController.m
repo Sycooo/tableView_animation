@@ -33,18 +33,41 @@
     return 100;
 }
 
-
-
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    cell.layer.transform = CATransform3DMakeRotation(-M_PI/2, 0, 0, 1);
+//    cell.layer.transform = CATransform3DMakeRotation(-M_PI/2, 0, 0, 1);
     
-    [UIView animateWithDuration:1.0 animations:^{
+    cell.layer.bounds = CGRectMake(0, 0, 0, 0);
+    
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:10 options:UIViewAnimationOptionCurveEaseOut animations:^{
         
-        cell.layer.transform = CATransform3DMakeRotation(M_PI/2, 0, 0, 0);
+        cell.layer.bounds = CGRectMake(0, 0, self.view.frame.size.width, 100);
+        
+    } completion:^(BOOL finished) {
         
     }];
+    
+    
+    [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+//    cell.alpha = 0;
+    
+    [UIView animateWithDuration:1 animations:^{
+        
+//        cell.layer.transform = CATransform3DMakeRotation(M_PI/2, 0, 0, 0);
+        
+//        cell.layer.bounds = CGRectMake(0, 0, self.view.frame.size.width, 100);
+        
+//        cell.alpha = 1;
+        
+    }];
+    
 
 }
 
@@ -59,7 +82,7 @@
     }
     
     cell.imageView.image = [UIImage imageNamed:@"pic.jpg"];
-    cell.textLabel.text = @"👿👿👿👿";
+    cell.textLabel.text = [NSString stringWithFormat:@"xxxxxxxxxxxxx%ld",(long)indexPath.row];
     return cell;
     
     
